@@ -3,4 +3,6 @@
    This app is built by using node.js, express.js, socket.io 
   
 #npm i 
-nodemon app
+#npm start 
+#http://localhost:3000/john 
+  
