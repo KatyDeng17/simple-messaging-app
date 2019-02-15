@@ -15,11 +15,17 @@
      <button type="button" id="submit"> submit </button>
   </form>
 <script src="/socket.io/socket.io.js"></script>
+
+
 <script>
    let socket = io(); 
    let username = window.location.pathname.split("/")[1]; 
    document.getElementById('user').value = username; 
    document.getElementById('username').innerText = username; 
+   //sending message to socket.io
+   document.getElementById('submit').addEventListener("click", (e) => {
+     socket.emit('chat message', {user:  username, message: document.getElementById('message').value  });
+    })   
 </script>
 </body>
 </html>
