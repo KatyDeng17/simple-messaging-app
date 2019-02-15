@@ -7,6 +7,19 @@
   <title>Websocket app</title>
 </head>
 <body>
-  <h1>Testing </h1>
+  <form id='msg-form'>
+    <p>You join in as : <span id="username"></span></p>
+    <p>write your message:</p>
+    <input type="hidden" name="user" id="user" />
+    <input type="text" name="message" id="message" />
+     <button type="button" id="submit"> submit </button>
+  </form>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+   let socket = io(); 
+   let username = window.location.pathname.split("/")[1]; 
+   document.getElementById("user").value = username;
+   document.getElementById('username').innerText = username;
+</script>
 </body>
 </html>
