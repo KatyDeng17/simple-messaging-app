@@ -14,6 +14,10 @@
     <input type="text" name="message" id="message" />
      <button type="button" id="submit"> submit </button>
   </form>
+
+  <ul id = "chat-area">
+
+  </ul>
 <script src="/socket.io/socket.io.js"></script>
 
 
@@ -22,10 +26,16 @@
    let username = window.location.pathname.split("/")[1]; 
    document.getElementById('user').value = username; 
    document.getElementById('username').innerText = username; 
-   //sending message to socket.io
+   //1. sending message to socket.io
    document.getElementById('submit').addEventListener("click", (e) => {
      socket.emit('chat message', {user:  username, message: document.getElementById('message').value  });
     })   
+   //2 step on app.js
+    //3. displaying the emitted message 
+  socket.on('chat message', (msg)=>{
+    console.log(msg); 
+    document.getElementById('chat-area').innerHTML += `<li>${msg.user} says: ${msg.message} </li> `; 
+  })
 </script>
 </body>
 </html>
