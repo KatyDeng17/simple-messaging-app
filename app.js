@@ -11,14 +11,15 @@ app.get('/:user',(req,res)=>{
 //2  receiving the client message
 io.on('connection', (socket)=>{
   console.log('a user connected'); 
-  socket.on('disconnect', ()=>{
-    console.log('user disconnected'); 
-  })
   //getting the message from the client 
   socket.on('chat message',function(msg){
      console.log(msg); 
      //sending it back to the client
      io.emit('chat message', msg);
+  })
+  //user disconnect
+  socket.on('disconnect', ()=>{
+    console.log('user disconnected'); 
   })
 
 })

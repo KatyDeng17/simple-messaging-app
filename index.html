@@ -31,6 +31,7 @@
      socket.emit('chat message', {user:  username, message: document.getElementById('message').value  });
     })   
    //2 step on app.js
+   
     //3. displaying the emitted message 
   socket.on('chat message', (msg)=>{
     console.log(msg); 
